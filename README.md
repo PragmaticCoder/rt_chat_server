@@ -1,4 +1,4 @@
-# Django Vue Template ✌️ 🐍
+# Real-Time Chat Server ✌️ 🐍
 
 ![Vue Logo](/src/assets/logo-vue.png "Vue Logo")
 ![Django Logo](/src/assets/logo-django.png "Django Logo")
@@ -51,7 +51,7 @@ Prefer Flask? Checkout my [gtalarico/flask-vuejs-template](https://github.com/gt
 | `/src/main.js`       | JS Application Entry Point                 |
 | `/public/index.html` | Html Application Entry Point (`/`)         |
 | `/public/static`     | Static Assets                              |
-| `/dist/`             | Bundled Assets Output (generated at `yarn build`) |
+| `/dist/`             | Bundled Assets Output (generated at `yarn build or npx vue-cli-service build`) |
 
 ## Prerequisites
 
@@ -85,6 +85,8 @@ $ python manage.py runserver
 From another tab in the same directory:
 
 ```
+$ npx vue-cli-service serve
+OR
 $ yarn serve
 ```
 
@@ -101,7 +103,7 @@ development server only on `:8000`, but you have to build build the Vue app firs
 and the page will not reload on changes.
 
 ```
-$ yarn build
+$ npx vue-cli-service build OR yarn build
 $ python manage.py runserver
 ```
 ## Pycharm additional configuration
