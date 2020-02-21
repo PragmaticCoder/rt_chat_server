@@ -2,9 +2,9 @@
   <header class="header">
     <h1>Sask Confessions</h1>
     <div id="nav">
-      <router-link to="/">To Do App</router-link> |
-      <router-link to="/messages">Message</router-link> |
-      <router-link to="/chat">Chat</router-link>
+      <router-link to="/">Chat Room</router-link> |
+      <router-link to="/todo">To Do App</router-link> |
+      <router-link to="/messages">Message</router-link>
     </div>
   </header>
 </template>
