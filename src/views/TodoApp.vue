@@ -11,7 +11,7 @@ import AddTodo from "../components/AddTodo";
 import axios from "axios";
 
 export default {
-  name: "Home",
+  name: "Todo",
   components: {
     Todos,
     AddTodo
