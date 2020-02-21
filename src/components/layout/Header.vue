@@ -2,7 +2,7 @@
   <header class="header">
     <h1>Sask Confessions</h1>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">To Do App</router-link> |
       <router-link to="/messages">Message</router-link> |
       <router-link to="/chat">Chat</router-link>
     </div>
