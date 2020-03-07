@@ -10,6 +10,8 @@ gunicorn = "*"
 whitenoise = ">=5"
 dj-database-url = "*"
 psycopg2-binary = "*"
+channels = "*"
+channels-redis = "*"
 
 [dev-packages]
 v = {editable = true,version = "*"}
