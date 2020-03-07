@@ -2,7 +2,7 @@ from django.conf import settings
 from django.db import models
 from rest_framework import serializers
 
-# from src.chat.managers import ThreadManager
+from .managers import ThreadManager
 
 
 class Message(models.Model):
@@ -21,7 +21,7 @@ class Thread(models.Model):
         db_table = 'chatxchannels_thread'
         verbose_name_plural = 'threads'
 
-    # objects = ThreadManager()
+    objects = ThreadManager()
 
     first = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chat_thread_first')
     second = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='chat_thread_second')
