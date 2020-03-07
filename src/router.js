@@ -1,21 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import VueDemo from '@/components/VueDemo'
-import Messages from '@/components/Messages'
+import Messages from '@/views/Messages'
+import TodoApp from '@/views/TodoApp'
+import ChatRoom from '@/views/ChatRoom'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
     routes: [
         {
             path: '/',
-            name: 'home',
-            component: VueDemo
+            name: 'chatroom',
+            component: ChatRoom
         },
         {
             path: '/messages',
             name: 'messages',
             component: Messages
+        },
+        {
+            path: '/todo',
+            name: 'todo',
+            component: TodoApp
         }
     ]
 })
