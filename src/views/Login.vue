@@ -8,7 +8,7 @@
             <input
               type="text"
               class="form-control"
-              placeholder="Please enter your name:"
+              placeholder="Please enter your name"
               name="name"
               v-model="name"
             />
@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   name: "Login",
   data() {
@@ -31,11 +31,9 @@ export default {
   },
   methods: {
     login() {
-      if (this.name) {
-        this.$router.push({ name: "Chat", params: { name: this.name } });
-      } else {
-        this.errorText = "Please enter a name first!";
-      }
+      if (this.name)
+        this.$router.push({ name: 'chatroom', params: { name: this.name } });
+      else this.errorText = "Please enter your Anonymous username!";
     }
   }
 };
