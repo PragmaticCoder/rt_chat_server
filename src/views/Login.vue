@@ -14,6 +14,7 @@
             />
             <p v-if="errorText" class="text-danger">{{ errorText }}</p>
           </div>
+          <button class="btn-primary" type="submit">Enter Chat</button>
         </form>
       </div>
     </div>
@@ -32,7 +33,7 @@ export default {
   methods: {
     login() {
       if (this.name)
-        this.$router.push({ name: 'chatroom', params: { name: this.name } });
+        this.$router.push({ name: "chatroom", params: { name: this.name } });
       else this.errorText = "Please enter your Anonymous username!";
     }
   }
