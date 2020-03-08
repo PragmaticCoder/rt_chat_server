@@ -11,10 +11,6 @@
     </div>
     <div class="card-footer">
       <form @submit.prevent="sendMessage">
-        <div class="form-group">
-          <label for="user">User:</label>
-          <input type="text" v-model="user" class="form-control" />
-        </div>
         <div class="form-group pb-3">
           <label for="message">Message:</label>
           <input type="text" v-model="message" class="form-control" />
@@ -57,8 +53,14 @@ export default {
     this.socket.onopen = e => {
       console.log("open:", e);
 
+      this.message = "";
+
+      var jsonData = JSON.stringify({
+        msg: this.message,
+        username: "alvi"
+      });
+
       this.socket.send(jsonData);
-      messageInput.val("");
     };
 
     this.socket.onerror = function(e) {
@@ -78,7 +80,15 @@ export default {
   methods: {
     sendMessage(e) {
       e.preventDefault();
-      console.log("Button Pressed!ß");
+      var jsonData = JSON.stringify({
+        msg: this.message,
+        username: "alvi"
+      });
+
+      this.socket.send(jsonData);
+      this.messages.push(this.message);
+
+      e.target.reset();
     }
   }
 };
