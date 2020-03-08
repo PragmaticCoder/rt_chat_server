@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-nav class="header">
+    <b-nav tabs align="center">
       <b-nav-item to="/chatroom">Chat Room</b-nav-item>
       <b-nav-item to="/todo">To Do App</b-nav-item>
       <b-nav-item to="/messages">Message</b-nav-item>
