@@ -24,6 +24,10 @@
 import CreateMessage from "@/components/CreateMessage";
 import moment from "moment";
 
+const loc = window.location;
+const webSocketPath = "ws://" + loc.host + "/chat/";
+const socket = new WebSocket(webSocketPath);
+
 export default {
   name: "ChatRoom",
   props: ["name"],
@@ -35,9 +39,19 @@ export default {
       messages: []
     };
   },
-//   created() {
-      
-//   }
+  methods: {
+    sendMessage(e) {
+      e.preventDefault();
+      console.log("data:", e.data);
+      var msgData = JSON.parse(e.data);
+      console.log(msgData);
+      $("#chat-items").append(
+        `<li><b>${msgData.username}:</b> ${msgData.msg}</li>`
+      );
+    }
+  }
+  // created() {
+  // }
 };
 </script>
 
