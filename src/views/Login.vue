@@ -3,9 +3,9 @@
     <div class="card login">
       <div class="card-body">
         <h2 class="card-title text-center">Login</h2>
-        <form @submit.prevent="login" class="text-center">
+        <b-form @submit.prevent="login" class="text-center">
           <div class="form-group">
-            <input
+            <b-form-input
               type="text"
               class="form-control"
               placeholder="Please enter your name"
@@ -14,8 +14,8 @@
             />
             <p v-if="errorText" class="text-danger">{{ errorText }}</p>
           </div>
-          <button class="btn-primary" type="submit">Enter Chat</button>
-        </form>
+          <b-button variant="primary" type="submit">Enter Chat</b-button>
+        </b-form>
       </div>
     </div>
   </div>
