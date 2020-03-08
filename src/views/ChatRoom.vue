@@ -1,32 +1,33 @@
 <template>
-  <b-container class="chat">
-    <h2 class="text-primary text-center">Real-Time Chat</h2>
-    <h5 class="text-secondary text-cen">Powered by Vue JS</h5>
+  <div class="card mt-3">
     <div class="card-body">
-      <!-- <p class="text-secondary nomessages" v-if="messages.length == 0">
-        [No messages yet!]
-      </p> -->
-      <div class="messages" v-chat-scroll="{ always: false, smooth: true }">
-        <div v-for="message in messages" :key="message.id">
-          <span class="text-info">[{{ message.name }}]</span>
-          <span>{{ message.message }}</span>
-          <span class="text-secondary time">{{ message.timestamp }}</span>
-        </div>
+      <div class="card-title">
+        <h3>Chat Group</h3>
+        <hr />
+      </div>
+      <div class="card-body">
+        <div class="messages"></div>
       </div>
     </div>
-    <div class="create-action">
-      <CreateMessage :name="name" />
+    <div class="card-footer">
+      <form @submit.prevent="sendMessage">
+        <div class="form-group">
+          <label for="user">User:</label>
+          <input type="text" v-model="user" class="form-control" />
+        </div>
+        <div class="form-group pb-3">
+          <label for="message">Message:</label>
+          <input type="text" v-model="message" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Send</button>
+      </form>
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>
 import CreateMessage from "@/components/CreateMessage";
-import moment from "moment";
-
-const loc = window.location;
-const webSocketPath = "ws://" + loc.host + "/chat/";
-const socket = new WebSocket(webSocketPath);
+// import moment from "moment";
 
 export default {
   name: "ChatRoom",
@@ -36,23 +37,49 @@ export default {
   },
   data() {
     return {
-      messages: []
+      user: "",
+      message: "",
+      messages: [],
+      socket: {}
     };
+  },
+  mounted() {
+    const loc = window.location;
+    const webSocketPath = "ws://" + loc.host + "/chat/";
+    this.socket = new WebSocket(webSocketPath);
+
+    this.socket.onmessage = e => {
+      console.log("data:", e.data);
+      var msgData = JSON.parse(e.data);
+      console.log(msgData);
+    };
+
+    this.socket.onopen = e => {
+      console.log("open:", e);
+
+      this.socket.send(jsonData);
+      messageInput.val("");
+    };
+
+    this.socket.onerror = function(e) {
+      console.log("error:", e);
+    };
+
+    this.socket.onclose = function(e) {
+      console.log("closed:", e);
+    };
+
+    if (this.socket.readyState === WebSocket.OPEN) {
+      console.log("socket.readyState == WebSocket.OPEN");
+    } else if (this.socket.readyState === WebSocket.CONNECTING) {
+      console.log("Connecting");
+    }
   },
   methods: {
     sendMessage(e) {
       e.preventDefault();
-      console.log("data:", e.data);
-      var msgData = JSON.parse(e.data);
-      console.log(msgData);
-      $("#chat-items").append(
-        `<li><b>${msgData.username}:</b> ${msgData.msg}</li>`
-      );
+      console.log("Button Pressed!ß");
     }
   }
-  // created() {
-  // }
 };
 </script>
-
-<style scoped></style>
