@@ -9,7 +9,6 @@
               type="text"
               class="form-control"
               placeholder="Please enter your name:"
-              ,
               name="name"
               v-model="name"
             />
@@ -23,7 +22,7 @@
 
 <script>
 export default {
-  name: "login",
+  name: "Login",
   data() {
     return {
       name: "",

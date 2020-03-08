@@ -1,8 +1,8 @@
 <template>
   <header class="header">
-    <h1>Sask Confessions</h1>
+    <h1>Sask Confessions Chat</h1>
     <div id="nav">
-      <router-link to="/">Chat Room</router-link> |
+      <router-link to="/chatroom">Chat Room</router-link> |
       <router-link to="/todo">To Do App</router-link> |
       <router-link to="/messages">Message</router-link>
     </div>
